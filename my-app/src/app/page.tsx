@@ -69,8 +69,29 @@ function App() {
     },
   ];
 
+  // Smooth scroll handler
+  const handleSmoothScroll = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    targetId: string
+  ) => {
+    e.preventDefault();
+    const target = document.querySelector(targetId);
+    if (target) {
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   return (
     <>
+      <style jsx global>{`
+        html {
+          scroll-behavior: smooth;
+        }
+      `}</style>
+
       <nav>
         <Navbar
           links={[
@@ -126,7 +147,13 @@ function App() {
               </div>
               <div className="mt-5">
                 <Button className="bg-black" variant="outline" asChild>
-                  <Link href={"#About"}> Learn More </Link>
+                  <a
+                    href="#About"
+                    onClick={(e) => handleSmoothScroll(e, "#About")}
+                    className="inline-flex items-center justify-center"
+                  >
+                    Learn More
+                  </a>
                 </Button>
               </div>
             </div>
@@ -190,7 +217,7 @@ function App() {
               convenient for people.
               <br />
               <br />
-              My journey started with HTML, CSS, and JavaScript, and I’ve been
+              My journey started with HTML, CSS, and JavaScript, and I've been
               exposed to modern dev tools during my senior year (Present)
               expanded to React, Next.js, React Native, Tailwind, TypeScript,
               and Supabase. Also, I learned how to use Github.
@@ -336,11 +363,11 @@ function App() {
           <FadeInSection>
             <div className="relative z-10 text-left mb-10 sm:mb-0">
               <h1 className="font-bold sm:text-5xl text-3xl leading-tight mb-6">
-                Let’s Build Something Great
+                Let's Build Something Great
               </h1>
               <p className="text-gray-300 text-lg max-w-md">
                 Have a project in mind or just want to say hi? Fill out the form
-                and I’ll get back to you as soon as possible.
+                and I'll get back to you as soon as possible.
               </p>
             </div>
           </FadeInSection>
@@ -384,7 +411,7 @@ function App() {
                   </label>
                   <textarea
                     required
-                    placeholder="Tell me about your project..."
+                    placeholder="Enter your message"
                     rows={4}
                     className="w-full px-4 py-2 rounded-md bg-white/10 text-white border border-white/20 focus:outline-none focus:border-white transition-all resize-none"
                   />

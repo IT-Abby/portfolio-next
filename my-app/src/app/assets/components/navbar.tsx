@@ -45,7 +45,6 @@ export default function Navbar({ links }: NavbarProps) {
         >
           <Link href="#Contact">Contact</Link>
         </Button>
-        <AnimatedThemeToggler />
       </div>
     </nav>
   );
