@@ -1,272 +1,406 @@
+"use client";
+
+import { motion, useInView } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+
 import Navbar from "@/app/assets/components/navbar";
 import { Button } from "./assets/components/custombutton";
-import { ShootingStars } from "@/components/ui/shadcn-io/shooting-stars";
-import TypingText from "@/components/ui/shadcn-io/typing-text";
 import { Meteors } from "@/components/magicui/meteors";
-import Card from "@/app/assets/components/card";
-import { Marquee } from "@/components/magicui/marquee";
-
+import LottiePlayer from "./assets/components/LottiePlayer";
 import Link from "next/link";
+import Socials from "./assets/components/socials";
+import Logo from "./assets/components/logo";
+import ExperienceCard from "./assets/components/expcard";
+import ProjectCard from "./assets/components/projectcard";
+import { Input } from "@/components/ui/input";
+import { ShootingStars } from "@/components/ui/shadcn-io/shooting-stars";
+
+function FadeInSection({ children }: { children: React.ReactNode }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { margin: "-50px" });
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    setVisible(isInView);
+  }, [isInView]);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={{
+        opacity: visible ? 1 : 0,
+        y: visible ? 0 : 50,
+      }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 function App() {
-  const cards = [
+  const projects = [
     {
-      title: "<What Can I Do/>",
-      subtitle:
-        "> I can help develop solutions that\n  will help you grow your business",
-      items: ["Front-end", "Info Sec & Sys Ad.", "Design"],
+      image: "bdle.png",
+      title: "BDLE: Beadle/Attendance Management System",
+      description:
+        "BDLE, an AdNU-based Beadle Attendance System which digitalizes the current system to streamline the process of checking attendance. With this it will increase the productivity and efficiency while saving lots of time and paperwork for both the students and the OSA Employees",
+      tools: ["React", "CSS", "TypeScript", "Firebase"],
+      link: "https://bdle.onrender.com/",
+      status: "Completed",
     },
     {
-      title: "<Tools I Use/>",
-      subtitle:
-        "> I can help develop solutions that\n  will help you grow your business",
-      items: ["React", "Next.js", "Tailwind"],
-    },
-    {
-      title: "<Other Skills/>",
-      subtitle:
-        "> I can help develop solutions that\n  will help you grow your business",
-      items: ["Git", "Figma", "Testing"],
+      image: "beepney project.png",
+      title:
+        "Beepney: Enhancing Commuter Experience and Safety Through Mobile Platform",
+      description:
+        "Beepney, is a web and mobile application that enhances your commuting experience. It offers several features Fare Calculator, Cashless Fare Payment, View Stations",
+      tools: [
+        "Next.Js",
+        "React Native",
+        "CSS",
+        "TailWind",
+        "TypeScript",
+        "Supabase",
+      ],
+      link: "https://example.com",
+      status: "In-Progress",
     },
   ];
 
   return (
     <>
-      <pre className=" relative overflow-y-auto h-screen w-full scroll-smooth">
-        <code>
-          <div className="min-h-screen bg-black text-white">
-            {/* Background */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.07),transparent_80%)] blur-lg" />
-            <Meteors />
-            <ShootingStars
-              starColor="#FFFFFF"
-              trailColor="#FFFFFF"
-              minSpeed={13}
-              maxSpeed={13}
-              minDelay={120}
-              maxDelay={420}
-            />
-            <Navbar
-              links={[
-                { label: "Home", href: "#Home" },
-                { label: "About", href: "#About" },
-                { label: "Skills", href: "#Skills" },
-                { label: "Projects", href: "#Projects" },
-              ]}
-            />
+      <nav>
+        <Navbar
+          links={[
+            { label: "Home", href: "#Home" },
+            { label: "About", href: "#About" },
+            { label: "Skills", href: "#Skills" },
+            { label: "Projects", href: "#Projects" },
+          ]}
+        />
+      </nav>
 
-            {/* Main Content */}
-            <main>
-              {/* Home Section */}
-              <section
-                id="Home"
-                className="relative z-10 flex flex-col lg:flex-row items-start mt-24 px-6 sm:px-10 lg:px-20 font-code gap-12 min-h-screen"
-              >
-                <div className="flex-col w-full lg:w-1/2">
-                  <h1 className="text-2xl sm:text-3xl md:text-4xl">
-                    {"<"}Hello I’m Gabriel{"/>"}
-                  </h1>
+      <main className="min-h-screen bg-black text-white overflow-x-hidden [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+        {/* Home Section */}
 
-                  <TypingText
-                    text={[
-                      " > Im a Front-End Web & Mobile Developer \n with a passion for building and \n intuitive a responsive apps.",
-                    ]}
-                    typingSpeed={75}
-                    pauseDuration={13}
-                    showCursor={true}
-                    cursorCharacter="|"
-                    className="mt-5 text-base sm:text-lg md:text-xl text-left leading-relaxed"
-                    textColors={["#FFFFFFF"]}
-                    loop={true}
-                  />
-
-                  <div className="ml-2 sm:ml-5 mt-6 sm:mt-10">
-                    <Button className="bg-black" variant="outline" asChild>
-                      <Link href={"#About"}> Learn More</Link>
-                    </Button>
-                  </div>
-                </div>
-
-                {/* Right Side */}
-                <div className="flex flex-col w-full lg:w-1/2 lg:ml-150">
-                  {/* About Me */}
-                  <h2 className="text-xl sm:text-2xl mt-8 sm:mt-10">
-                    {"<"}About me{"/>"}
-                  </h2>
-                  <TypingText
-                    text={[
-                      " > A Web and Mobile Front-End Developer who is passionate about turning UI designs into interactive and user-friendly experiences.",
-                    ]}
-                    typingSpeed={75}
-                    pauseDuration={13}
-                    showCursor={true}
-                    cursorCharacter="|"
-                    className="mt-3 sm:mt-4 ml-2 sm:ml-4 text-left text-sm sm:text-base md:text-lg leading-relaxed"
-                    textColors={["#FFFFFFF"]}
-                    loop={true}
-                  />
-
-                  <div className="ml-2 sm:ml-4 mt-5">
-                    <Button className="bg-black" variant="outline" asChild>
-                      <Link href={"#Skills"}> Learn More </Link>
-                    </Button>
-                  </div>
-
-                  {/* My Skills */}
-                  <h2 className="text-xl sm:text-2xl mt-12 sm:mt-16">
-                    {"<"}My Skills{"/>"}
-                  </h2>
-                  <TypingText
-                    text={[
-                      " > I specialized in front-end development for web and mobile, with skills in React, Next.js, & React Native.",
-                    ]}
-                    typingSpeed={75}
-                    pauseDuration={13}
-                    showCursor={true}
-                    cursorCharacter="|"
-                    className="mt-3 sm:mt-4 ml-2 sm:ml-4 text-left text-sm sm:text-base md:text-lg leading-relaxed"
-                    textColors={["#FFFFFFF"]}
-                    loop={true}
-                  />
-
-                  <div className="ml-2 sm:ml-4 mt-5">
-                    <Button className="bg-black" variant="outline" asChild>
-                      <Link href={"#Follow"}> Learn More</Link>
-                    </Button>
-                  </div>
-                </div>
-              </section>
-
-              <section
-                id="About"
-                className=" relative overflow-hidden h-screen w-full flex flex-col items-center justify-center gap-30 "
-              >
-                <Meteors />
-
-                <h1 className="text-3xl mb-8">
-                  {"<"}About Me{"/>"}
-                </h1>
-
-                <div className="flex flex-col md:flex-row items-center gap-8">
-                  <div className="w-48 h-48 border rounded-lg overflow-hidden flex-shrink-0 lg:mr-50">
-                    <img
-                      src="/me.jpg"
-                      alt="Preview"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-
-                  <div className="text-center md:text-left">
-                    <p className="mt-3 lg:mr-40 sm:mt-4 ml-2 sm:ml-4 text-left text-sm sm:text-base md:text-lg leading-relaxed">
-                      {">"} A fourth-year undergraduate BS IT student at{"\n"}
-                      Ateneo de Naga University.
-                    </p>
-                    <p className="mt-3 lg:mr-40 sm:mt-4 ml-2 sm:ml-4 text-left text-sm sm:text-base md:text-lg leading-relaxed">
-                      {">"} A front-end web and mobile developer that is very
-                      {"\n"}
-                      optimistic and enthusiast when it comes to technologies.
-                    </p>
-
-                    <p className="mt-3 lg:mr-40 sm:mt-4 ml-2 sm:ml-4 text-left text-sm sm:text-base md:text-lg leading-relaxed">
-                      {">"} Currently focusing on developing my skills in
-                      {"\n"}
-                      front-end to have a solid foundation and skills when
-                      {"\n"}
-                      developing website's front-end.
-                    </p>
-                  </div>
-                </div>
-              </section>
-
-              {/* Skills*/}
-              <section
-                id="Skills"
-                className="relative overflow-hidden h-screen w-full flex flex-col items-center justify-center gap-30 "
-              >
-                <ShootingStars
-                  starColor="#FFFFFF"
-                  trailColor="#FFFFFF"
-                  minSpeed={13}
-                  maxSpeed={13}
-                  minDelay={120}
-                  maxDelay={420}
+        <section
+          id="Home"
+          className="flex flex-col-reverse sm:flex-row items-center justify-between gap-8 px-6 sm:px-10 pt-10 sm:pt-20 max-w-7xl mx-auto"
+        >
+          <Meteors />
+          <FadeInSection>
+            <div className="flex-1 text-left w-full sm:max-w-[550px]">
+              <h1 className="font-bold sm:text-5xl text-3xl leading-tight">
+                WEB AND MOBILE APP SOFTWARE DEVELOPER
+              </h1>
+              <p className="sm:mt-5 mt-3 text-gray-300">
+                Passionate developer crafting sleek, functional, user-focused
+                <br className="hidden sm:block" />
+                digital experiences, developing with modern tech stack tools
+                <br className="hidden sm:block" /> and uses AI tools to boost
+                production.
+              </p>
+              <div className="flex flex-row gap-2 mt-4">
+                <Socials
+                  href="https://facebook.com/gabsenar"
+                  src="fb.svg"
+                  alt="facebook"
                 />
+                <Socials
+                  href="https://instagram.com/gabsenar"
+                  src="ig.svg"
+                  alt="instagram"
+                />
+                <Socials
+                  href="https://github.com/IT-Abby"
+                  src="github.svg"
+                  alt="github"
+                />
+                <Socials
+                  href="https://linkedin.com/in/gabriel-señar-it"
+                  src="linkedin.svg"
+                  alt="linkedin"
+                />
+              </div>
+              <div className="mt-5">
+                <Button className="bg-black" variant="outline" asChild>
+                  <Link href={"#About"}> Learn More </Link>
+                </Button>
+              </div>
+            </div>
+          </FadeInSection>
 
-                <h1 className="text-3xl">
-                  {"<"}What Can I Offer?{"/>"}
-                </h1>
-                <div className=" flex flex-col sm:flex-row flex-wrap gap-7 justify-center items-start">
-                  {cards.map((card, index) => (
-                    <Card
-                      key={index}
-                      title={card.title}
-                      subtitle={card.subtitle}
-                      items={card.items}
-                    />
-                  ))}
-                </div>
-              </section>
+          <FadeInSection>
+            <div className="flex-1 flex justify-center items-center w-full sm:max-w-[600px] max-w-[700px]">
+              <div className="w-full aspect-square">
+                <LottiePlayer />
+              </div>
+            </div>
+          </FadeInSection>
+        </section>
 
-              {/* Projects */}
-              <section
-                id="Projects"
-                className="min-h-screen flex items-center justify-center"
-              >
-                <h2 className="text-3xl">
-                  {"<"}Projects Section Content Here{"/>"}
-                </h2>
-              </section>
+        {/* About Section */}
+        <section
+          id="About"
+          className="relative overflow-hidden h-screen w-full flex flex-col items-center justify-center gap-15"
+        >
+          <FadeInSection>
+            <h1 className="font-bold sm:text-5xl text-3xl leading-tight">
+              About
+            </h1>
+          </FadeInSection>
 
-              {/* Contact */}
-              <section
-                id="Contact"
-                className="min-h-screen flex items-center justify-center"
-              >
-                <h2 className="text-3xl">
-                  {"<"}Let's Work Together!{"/>"}
-                </h2>
+          <FadeInSection>
+            <div className="flex flex-row gap-10">
+              <Logo src="adnu.png" alt="ck" />
+              <Logo src="codekada.svg" alt="ck" />
+              <Logo src="beepney.svg" alt="ck" />
+            </div>
+          </FadeInSection>
 
-                <div className=""></div>
-              </section>
+          <img
+            src="star.svg"
+            alt="star"
+            className="absolute top-1/4 left-10 w-8 h-8 opacity-70"
+          />
+          <img
+            src="star.svg"
+            alt="star"
+            className="absolute top-1/3 right-20 w-6 h-6 opacity-50"
+          />
+          <img
+            src="star.svg"
+            alt="star"
+            className="absolute bottom-1/4 left-20 w-10 h-10 opacity-60"
+          />
+          <img
+            src="star.svg"
+            alt="star"
+            className="absolute bottom-1/3 right-10 w-7 h-7 opacity-80"
+          />
 
-              <footer className="justify-end align-center">
-                {/* Follow Me */}
-                <h2 id="Follow" className="text-xl sm:text-2xl mt-10 sm:mt-25">
-                  {"<"}Follow Me{"/>"}
-                </h2>
-                <div className="flex flex-row flex-wrap mt-4 gap-4">
-                  <a href="https://www.facebook.com/gabsenar" target="_blank">
-                    <img src="/fb.svg" alt="Facebook" width={40} height={40} />
-                  </a>
-                  <a
-                    className="bg-black text-white rounded-lg hover:bg-white transition-colors duration-200 ease-in-out"
-                    href="https://www.linkedin.com/in/gabriel-señar-it/"
-                    target="_blank"
-                  >
-                    <img
-                      src="/linkedin.svg"
-                      alt="LinkedIn"
-                      width={40}
-                      height={40}
-                    />
-                  </a>
-                  <a href="https://www.instagram.com/gabsenar" target="_blank">
-                    <img src="/ig.svg" alt="Instagram" width={40} height={40} />
-                  </a>
-                  <a href="https://github.com/IT-Abby" target="_blank">
-                    <img
-                      src="/github.svg"
-                      alt="Github"
-                      width={40}
-                      height={40}
-                    />
-                  </a>
-                </div>
-              </footer>
-            </main>
+          <FadeInSection>
+            <p className="text-center max-w-[700px] leading-relaxed text-gray-300">
+              I'm Gabriel V. Señar a fourth-year undergraduate BS Information
+              Technology student from Ateneo de Naga University — a passionate
+              website and mobile application software developer turning ideas
+              into functional systems that solve real problems and make life
+              convenient for people.
+              <br />
+              <br />
+              My journey started with HTML, CSS, and JavaScript, and I’ve been
+              exposed to modern dev tools during my senior year (Present)
+              expanded to React, Next.js, React Native, Tailwind, TypeScript,
+              and Supabase. Also, I learned how to use Github.
+            </p>
+          </FadeInSection>
+
+          <FadeInSection>
+            <div className="flex flex-row gap-10">
+              <ExperienceCard label="Years Experience" value={2} />
+              <ExperienceCard label="Projects Completed" value={2} />
+              <ExperienceCard label="Certification" value={0} />
+            </div>
+          </FadeInSection>
+        </section>
+
+        {/* Skills Section */}
+        <section
+          id="Skills"
+          className="relative overflow-hidden h-screen w-full flex flex-col items-center justify-center gap-20"
+        >
+          <FadeInSection>
+            <h1 className="font-bold sm:text-5xl text-3xl leading-tight">
+              Skills & Experience
+            </h1>
+          </FadeInSection>
+
+          <FadeInSection>
+            <p className="text-center max-w-[750px] leading-relaxed text-gray-300">
+              The main area of expertise is front-end development for both web
+              and mobile apps. Building small or medium projects with
+              Next.js/React (Web) and React Native (Mobile) with Tailwind,
+              TypeScript, and Supabase.
+            </p>
+          </FadeInSection>
+
+          <FadeInSection>
+            <div className="flex flex-row flex-wrap gap-10 justify-center">
+              {[
+                { src: "HTML logo.svg", alt: "HTML" },
+                { src: "CSS.svg", alt: "CSS" },
+                { src: "JS.svg", alt: "JavaScript" },
+                { src: "TS.svg", alt: "TypeScript" },
+                { src: "React.svg", alt: "React" },
+                { src: "Next.js logo.svg", alt: "Next.js" },
+              ].map((icon) => (
+                <motion.img
+                  key={icon.src}
+                  src={icon.src}
+                  alt={icon.alt}
+                  className="w-20 h-20"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5 }}
+                  viewport={{ once: true }}
+                />
+              ))}
+            </div>
+          </FadeInSection>
+
+          <FadeInSection>
+            <div className="flex flex-row flex-wrap gap-10 justify-center">
+              {[
+                { src: "React Native.svg", alt: "React Native" },
+                { src: "SB.svg", alt: "Supabase" },
+                { src: "Mongo.svg", alt: "MongoDB" },
+                { src: "Node.svg", alt: "Node.js" },
+                { src: "Figma.svg", alt: "Figma" },
+                { src: "Git.svg", alt: "Git" },
+              ].map((icon) => (
+                <motion.img
+                  key={icon.src}
+                  src={icon.src}
+                  alt={icon.alt}
+                  className="w-20 h-20"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 2 }}
+                  viewport={{ once: true }}
+                />
+              ))}
+            </div>
+          </FadeInSection>
+        </section>
+
+        {/* Projects Section */}
+        <section
+          id="Projects"
+          className="relative overflow-hidden h-screen w-full flex flex-col items-center justify-center gap-20"
+        >
+          <FadeInSection>
+            <h1 className="self-center font-bold sm:text-5xl text-3xl leading-tight mb-10">
+              My Projects
+            </h1>
+          </FadeInSection>
+          <FadeInSection>
+            <div className="flex flex-row gap-5">
+              {projects.map((project, index) => (
+                <ProjectCard
+                  key={index}
+                  image={project.image}
+                  title={project.title}
+                  description={project.description}
+                  tools={project.tools}
+                  link={project.link}
+                />
+              ))}
+            </div>
+          </FadeInSection>
+        </section>
+
+        {/* Contact Section */}
+        <section
+          id="Contact"
+          className="relative flex flex-col sm:flex-row items-center h-screen w-full justify-between gap-8 px-6 sm:px-10 pt-10 sm:pt-20 max-w-7xl mx-auto"
+        >
+          {/* Floating Stars */}
+          <img
+            src="star.svg"
+            alt="star"
+            className="absolute top-1/4 left-10 w-8 h-8 opacity-70"
+          />
+          <img
+            src="star.svg"
+            alt="star"
+            className="absolute top-1/3 right-5 w-6 h-6 opacity-50"
+          />
+          <img
+            src="star.svg"
+            alt="star"
+            className="absolute bottom-1/4 left-20 w-10 h-10 opacity-60"
+          />
+          <img
+            src="star 2.svg"
+            alt="star"
+            className="absolute bottom-1/3 right-3 w-7 h-7 opacity-80"
+          />
+
+          {/* Shooting Stars Background */}
+          <div className="absolute inset-0 w-full h-full overflow-hidden rounded-xl z-0 pointer-events-none">
+            <ShootingStars />
           </div>
-        </code>
-      </pre>
+
+          <FadeInSection>
+            <div className="relative z-10 text-left mb-10 sm:mb-0">
+              <h1 className="font-bold sm:text-5xl text-3xl leading-tight mb-6">
+                Let’s Build Something Great
+              </h1>
+              <p className="text-gray-300 text-lg max-w-md">
+                Have a project in mind or just want to say hi? Fill out the form
+                and I’ll get back to you as soon as possible.
+              </p>
+            </div>
+          </FadeInSection>
+
+          <FadeInSection>
+            <div className="relative z-10 bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl p-8 w-100 max-w-md shadow-lg">
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  alert("THIS FEATURE IS NOT YET IMPLEMENTED!");
+                }}
+                className="flex flex-col gap-5"
+              >
+                <div>
+                  <label className="block text-sm mb-2 text-gray-200">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Enter your name"
+                    className="w-full px-4 py-2 rounded-md bg-white/10 text-white border border-white/20 focus:outline-none focus:border-white transition-all"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm mb-2 text-gray-200">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    placeholder="Enter your email"
+                    className="w-full px-4 py-2 rounded-md bg-white/10 text-white border border-white/20 focus:outline-none focus:border-white transition-all"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm mb-2 text-gray-200">
+                    Message
+                  </label>
+                  <textarea
+                    required
+                    placeholder="Tell me about your project..."
+                    rows={4}
+                    className="w-full px-4 py-2 rounded-md bg-white/10 text-white border border-white/20 focus:outline-none focus:border-white transition-all resize-none"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="mt-2 bg-white text-black font-semibold py-2 rounded-md hover:bg-white/80 transition-colors duration-300"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </FadeInSection>
+        </section>
+      </main>
     </>
   );
 }
