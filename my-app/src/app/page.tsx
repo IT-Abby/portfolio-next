@@ -12,7 +12,7 @@ import Socials from "./assets/components/socials";
 import Logo from "./assets/components/logo";
 import ExperienceCard from "./assets/components/expcard";
 import ProjectCard from "./assets/components/projectcard";
-import { Input } from "@/components/ui/input";
+import Image from "next/image";
 import { ShootingStars } from "@/components/ui/shadcn-io/shooting-stars";
 
 function FadeInSection({ children }: { children: React.ReactNode }) {
@@ -42,7 +42,7 @@ function FadeInSection({ children }: { children: React.ReactNode }) {
 function App() {
   const projects = [
     {
-      image: "bdle.png",
+      image: "/bdle.png",
       title: "BDLE: Beadle/Attendance Management System",
       description:
         "BDLE, an AdNU-based Beadle Attendance System which digitalizes the current system to streamline the process of checking attendance. With this it will increase the productivity and efficiency while saving lots of time and paperwork for both the students and the OSA Employees",
@@ -51,7 +51,7 @@ function App() {
       status: "Completed",
     },
     {
-      image: "beepney project.png",
+      image: "/beepney project.png",
       title:
         "Beepney: Enhancing Commuter Experience and Safety Through Mobile Platform",
       description:
@@ -179,30 +179,38 @@ function App() {
 
           <FadeInSection>
             <div className="flex flex-row gap-10">
-              <Logo src="adnu.png" alt="ck" />
+              <Logo src="/adnu.png" alt="ck" />
               <Logo src="codekada.svg" alt="ck" />
               <Logo src="beepney.svg" alt="ck" />
             </div>
           </FadeInSection>
 
-          <img
-            src="star.svg"
+          <Image
+            src="/star.svg"
             alt="star"
+            width={32}
+            height={32}
             className="absolute top-1/4 left-10 w-8 h-8 opacity-70"
           />
-          <img
-            src="star.svg"
+          <Image
+            src="/star.svg"
             alt="star"
+            width={24}
+            height={24}
             className="absolute top-1/3 right-20 w-6 h-6 opacity-50"
           />
-          <img
-            src="star.svg"
+          <Image
+            src="/star.svg"
             alt="star"
+            width={40}
+            height={40}
             className="absolute bottom-1/4 left-20 w-10 h-10 opacity-60"
           />
-          <img
-            src="star.svg"
+          <Image
+            src="/star.svg"
             alt="star"
+            width={28}
+            height={28}
             className="absolute bottom-1/3 right-10 w-7 h-7 opacity-80"
           />
 
@@ -254,23 +262,28 @@ function App() {
           <FadeInSection>
             <div className="flex flex-row flex-wrap gap-10 justify-center">
               {[
-                { src: "HTML logo.svg", alt: "HTML" },
-                { src: "CSS.svg", alt: "CSS" },
-                { src: "JS.svg", alt: "JavaScript" },
-                { src: "TS.svg", alt: "TypeScript" },
-                { src: "React.svg", alt: "React" },
-                { src: "Next.js logo.svg", alt: "Next.js" },
+                { src: "/HTML logo.svg", alt: "HTML" },
+                { src: "/CSS.svg", alt: "CSS" },
+                { src: "/JS.svg", alt: "JavaScript" },
+                { src: "/TS.svg", alt: "TypeScript" },
+                { src: "/React.svg", alt: "React" },
+                { src: "/Next.js logo.svg", alt: "Next.js" },
               ].map((icon) => (
-                <motion.img
+                <motion.div
                   key={icon.src}
-                  src={icon.src}
-                  alt={icon.alt}
-                  className="w-20 h-20"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5 }}
                   viewport={{ once: true }}
-                />
+                >
+                  <Image
+                    src={icon.src}
+                    alt={icon.alt}
+                    width={80}
+                    height={80}
+                    className="w-20 h-20"
+                  />
+                </motion.div>
               ))}
             </div>
           </FadeInSection>
@@ -278,23 +291,28 @@ function App() {
           <FadeInSection>
             <div className="flex flex-row flex-wrap gap-10 justify-center">
               {[
-                { src: "React Native.svg", alt: "React Native" },
-                { src: "SB.svg", alt: "Supabase" },
-                { src: "Mongo.svg", alt: "MongoDB" },
-                { src: "Node.svg", alt: "Node.js" },
-                { src: "Figma.svg", alt: "Figma" },
-                { src: "Git.svg", alt: "Git" },
+                { src: "/React Native.svg", alt: "React Native" },
+                { src: "/SB.svg", alt: "Supabase" },
+                { src: "/Mongo.svg", alt: "MongoDB" },
+                { src: "/Node.svg", alt: "Node.js" },
+                { src: "/Figma.svg", alt: "Figma" },
+                { src: "/Git.svg", alt: "Git" },
               ].map((icon) => (
-                <motion.img
+                <motion.div
                   key={icon.src}
-                  src={icon.src}
-                  alt={icon.alt}
-                  className="w-20 h-20"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 2 }}
                   viewport={{ once: true }}
-                />
+                >
+                  <Image
+                    src={icon.src}
+                    alt={icon.alt}
+                    width={80}
+                    height={80}
+                    className="w-20 h-20"
+                  />
+                </motion.div>
               ))}
             </div>
           </FadeInSection>
@@ -331,24 +349,32 @@ function App() {
           id="Contact"
           className="relative flex flex-col sm:flex-row items-center h-screen w-full justify-between gap-8 px-6 sm:px-10 pt-10 sm:pt-20 max-w-7xl mx-auto"
         >
-          <img
-            src="star.svg"
+          <Image
+            src="/star.svg"
             alt="star"
+            width={32}
+            height={32}
             className="absolute top-1/4 left-10 w-8 h-8 opacity-70"
           />
-          <img
-            src="star.svg"
+          <Image
+            src="/star.svg"
             alt="star"
+            width={24}
+            height={24}
             className="absolute top-1/3 right-5 w-6 h-6 opacity-50"
           />
-          <img
-            src="star.svg"
+          <Image
+            src="/star.svg"
             alt="star"
+            width={40}
+            height={40}
             className="absolute bottom-1/4 left-20 w-10 h-10 opacity-60"
           />
-          <img
-            src="star 2.svg"
+          <Image
+            src="/star 2.svg"
             alt="star"
+            width={28}
+            height={28}
             className="absolute bottom-1/3 right-3 w-7 h-7 opacity-80"
           />
 

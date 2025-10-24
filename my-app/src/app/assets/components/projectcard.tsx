@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 interface ProjectCardProps {
   image: string;
@@ -19,10 +20,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     <div className="group relative bg-zinc-900 rounded-lg overflow-hidden border border-zinc-800 hover:border-gray-600 transition-all duration-300 max-w-sm hover:-translate-y-1">
       {/* Image */}
       <div className="relative w-full h-40 overflow-hidden bg-zinc-800">
-        <img
+        <Image
           src={image}
           alt={title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          fill
+          className=" object-cover transition-transform duration-500 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent opacity-60" />
       </div>

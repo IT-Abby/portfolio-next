@@ -1,27 +1,26 @@
-"use client";
+import Image from "next/image";
 
-import React from "react";
-import Link from "next/link";
-
-interface SocialIconProps {
+interface SocialProps {
   href: string;
   src: string;
   alt: string;
 }
 
-export default function SocialIcon({ href, src, alt }: SocialIconProps) {
+export default function Socials({ href, src, alt }: SocialProps) {
   return (
-    <Link
+    <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
       className="group w-10 h-10 flex items-center justify-center rounded-xl bg-white/10 hover:bg-white/20 transition duration-300 border border-white/20"
     >
-      <img
+      <Image
         src={src}
         alt={alt}
-        className="w-7 h-7 object-contain group-hover:scale-110 transition"
+        width={28}
+        height={28}
+        className="object-contain group-hover:scale-110 transition-transform duration-300"
       />
-    </Link>
+    </a>
   );
 }
