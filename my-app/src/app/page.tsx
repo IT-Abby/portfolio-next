@@ -7,7 +7,6 @@ import Navbar from "@/app/assets/components/navbar";
 import { Button } from "./assets/components/custombutton";
 import { Meteors } from "@/components/magicui/meteors";
 import LottiePlayer from "./assets/components/LottiePlayer";
-import Link from "next/link";
 import Socials from "./assets/components/socials";
 import Logo from "./assets/components/logo";
 import ExperienceCard from "./assets/components/expcard";
