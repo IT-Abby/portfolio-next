@@ -6,7 +6,6 @@ interface ProjectCardProps {
   description: string;
   tools: string[];
   link?: string;
-  status?: string;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -15,7 +14,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   description,
   tools,
   link,
-  status,
 }) => {
   return (
     <div className="group relative bg-zinc-900 rounded-lg overflow-hidden border border-zinc-800 hover:border-gray-600 transition-all duration-300 max-w-sm hover:-translate-y-1">
