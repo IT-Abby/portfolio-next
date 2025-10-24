@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Button } from "./custombutton";
-import { AnimatedThemeToggler } from "@/components/magicui/animated-theme-toggler";
+
 import Link from "next/link";
 
 interface NavItem {
@@ -37,7 +37,6 @@ export default function Navbar({ links }: NavbarProps) {
         ))}
       </ul>
 
-      {/* Contact Button + Theme Toggler */}
       <div className="flex items-center gap-3">
         <Button
           className="bg-transparent border w-28 border-white hover:bg-white hover:text-black transition"
