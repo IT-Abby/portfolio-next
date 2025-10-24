@@ -69,7 +69,6 @@ function App() {
     },
   ];
 
-  // Smooth scroll handler
   const handleSmoothScroll = (
     e: React.MouseEvent<HTMLAnchorElement>,
     targetId: string
@@ -105,7 +104,6 @@ function App() {
 
       <main className="min-h-screen bg-black text-white overflow-x-hidden [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
         {/* Home Section */}
-
         <section
           id="Home"
           className="flex flex-col-reverse sm:flex-row items-center justify-between gap-8 px-6 sm:px-10 pt-10 sm:pt-20 max-w-7xl mx-auto"
@@ -210,15 +208,15 @@ function App() {
 
           <FadeInSection>
             <p className="text-center max-w-[700px] leading-relaxed text-gray-300">
-              I'm Gabriel V. Señar a fourth-year undergraduate BS Information
-              Technology student from Ateneo de Naga University — a passionate
-              website and mobile application software developer turning ideas
-              into functional systems that solve real problems and make life
-              convenient for people.
+              I&apos;m Gabriel V. Señar a fourth-year undergraduate BS
+              Information Technology student from Ateneo de Naga University — a
+              passionate website and mobile application software developer
+              turning ideas into functional systems that solve real problems and
+              make life convenient for people.
               <br />
               <br />
-              My journey started with HTML, CSS, and JavaScript, and I've been
-              exposed to modern dev tools during my senior year (Present)
+              My journey started with HTML, CSS, and JavaScript, and I&apos;ve
+              been exposed to modern dev tools during my senior year (Present)
               expanded to React, Next.js, React Native, Tailwind, TypeScript,
               and Supabase. Also, I learned how to use Github.
             </p>
@@ -333,7 +331,6 @@ function App() {
           id="Contact"
           className="relative flex flex-col sm:flex-row items-center h-screen w-full justify-between gap-8 px-6 sm:px-10 pt-10 sm:pt-20 max-w-7xl mx-auto"
         >
-          {/* Floating Stars */}
           <img
             src="star.svg"
             alt="star"
@@ -355,7 +352,6 @@ function App() {
             className="absolute bottom-1/3 right-3 w-7 h-7 opacity-80"
           />
 
-          {/* Shooting Stars Background */}
           <div className="absolute inset-0 w-full h-full overflow-hidden rounded-xl z-0 pointer-events-none">
             <ShootingStars />
           </div>
@@ -363,11 +359,11 @@ function App() {
           <FadeInSection>
             <div className="relative z-10 text-left mb-10 sm:mb-0">
               <h1 className="font-bold sm:text-5xl text-3xl leading-tight mb-6">
-                Let's Build Something Great
+                Let&apos;s Build Something Great
               </h1>
               <p className="text-gray-300 text-lg max-w-md">
                 Have a project in mind or just want to say hi? Fill out the form
-                and I'll get back to you as soon as possible.
+                and I&apos;ll get back to you as soon as possible.
               </p>
             </div>
           </FadeInSection>
