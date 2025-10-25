@@ -47,7 +47,6 @@ function App() {
         "BDLE, an AdNU-based Beadle Attendance System which digitalizes the current system to streamline the process of checking attendance. With this it will increase the productivity and efficiency while saving lots of time and paperwork for both the students and the OSA Employees",
       tools: ["React", "CSS", "TypeScript", "Firebase"],
       link: "https://bdle.onrender.com/",
-      status: "Completed",
     },
     {
       image: "/beepney project.png",
@@ -59,12 +58,19 @@ function App() {
         "Next.Js",
         "React Native",
         "CSS",
-        "TailWind",
+        "Tailwind CSS",
         "TypeScript",
         "Supabase",
       ],
       link: "https://example.com",
-      status: "In-Progress",
+    },
+    {
+      image: "/codekada.png",
+      title: "Codekada Official Website",
+      description:
+        "Codekada is a startup that transforms your ideas into fully functional, reliable, and scalable systems designed to deliver real-world impact and seamless performance. ",
+      tools: ["Next.Js", "Tailwind CSS", "TypeScript"],
+      link: "https://example.com",
     },
   ];
 
@@ -232,7 +238,7 @@ function App() {
           <FadeInSection>
             <div className="flex flex-row gap-10">
               <ExperienceCard label="Years Experience" value={2} />
-              <ExperienceCard label="Projects Completed" value={2} />
+              <ExperienceCard label="Projects Completed" value={3} />
               <ExperienceCard label="Certification" value={0} />
             </div>
           </FadeInSection>
