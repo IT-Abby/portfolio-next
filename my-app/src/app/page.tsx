@@ -148,6 +148,17 @@ function App() {
                   alt="linkedin"
                 />
               </div>
+
+              <div className="mt-5 flex flex-col sm:flex-row gap-3">
+                <Button
+                  className="bg-white text-black hover:bg-white/80"
+                  asChild
+                >
+                  <a href="/SEÑAR-CV.pdf" download="SEÑAR-CV.pdf">
+                    Download Resume
+                  </a>
+                </Button>
+              </div>
               <div className="mt-5">
                 <Button className="bg-black" variant="outline" asChild>
                   <a
