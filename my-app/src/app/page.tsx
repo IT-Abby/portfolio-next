@@ -62,7 +62,7 @@ function App() {
         "TypeScript",
         "Supabase",
       ],
-      link: "https://example.com",
+      link: "https://github.com/erictanthegreat/Beepney-Project",
     },
     {
       image: "/codekada.png",
@@ -70,7 +70,7 @@ function App() {
       description:
         "Codekada is a startup that transforms your ideas into fully functional, reliable, and scalable systems designed to deliver real-world impact and seamless performance. ",
       tools: ["Next.Js", "Tailwind CSS", "TypeScript"],
-      link: "https://example.com",
+      link: "https://github.com/IT-Abby/codekada",
     },
   ];
 
