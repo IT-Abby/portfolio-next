@@ -62,7 +62,7 @@ function App() {
         "TypeScript",
         "Supabase",
       ],
-      link: "https://github.com/erictanthegreat/Beepney-Project",
+      link: "https://beepney.vercel.app/",
     },
     {
       image: "/codekada.png",
